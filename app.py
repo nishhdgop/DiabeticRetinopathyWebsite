@@ -1,5 +1,5 @@
 import smtplib
-import mysql.connector
+# import mysql.connector
 import pyttsx3
 import concurrent.futures
 import sys
@@ -61,7 +61,7 @@ def predict_new(path):
     
     a=predictions[pred[0]]
     print(f"\n\n\n\n\n\nPredicted: {a}\n\n\n\n\n\n")
-    mail("nischithtn@gmail.com",f"""
+    mail("malvika.tomail@gmail.com",f"""
     Greetings from iHelp....
     Your diabetic retinopathy is {a} 
     Thank you for using our service!!!!!
@@ -77,7 +77,7 @@ def hello_world():
 @app.route('/',methods=['POST'])
 def predict():
     imagefile = request.files['imagefile'] 
-    image_path = "./images/"+imagefile.filename 
+    image_path = "images/"+imagefile.filename 
     imagefile.save(image_path)
     predict_new(image_path)
     return render_template('index.html') 

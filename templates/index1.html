@@ -1,57 +1,307 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-
     .submit-btn {
       padding: 18px;
       margin: 100px auto;
     }
 
-    .center-it {
-      background-color: red;
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
+    body {
+
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    body section {
+      padding-top: 5%;
+      padding-bottom: 5%;
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:visited {
+      background-color: #0B0052 !important;
+    }
+
+    #ihelp {
+      color: white;
     }
   </style>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-  <title>TEST</title>
-</head>
-
-<body>
-  <h1 class="text-center">Image Classifier</h1>
-  <section id="input-form">
-    <div class="mb-3">
-      <form action="/" method="post" enctype="multipart/form-data">
-        <input class="form-control" type="file" name="imagefile">
-        <div class="center-it">
-          <button type="submit" class="btn btn-primary btn-lg submit-btn" value="Predict Image">Choose The Image On
-            Which Prediction Is To Be Done</button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  
-
-
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+  <title>iHELP</title>
+  <script type="text/javascript"> 
+
+    function fn1()//or maybe fun
+    { 
+      // set fso = CreateObject("Scripting.FileSystemObeject");
+        // set s = fso.CreateTextFile("C:\Users\gupta\Desktop\nikhil.txt",True);
+      
+      var str = document.getElementById("form3Example1c").value;
+      console.log('str');
+        // alert("Value inside the box is: " +str);
+
+        // s.writeline("Name: " + str);
+        // s.close();
+
+
+     }
+
+  </script>
+</head>
+
+
+<body background="{{url_for('static', filename='backgroundstar.jpg')}}">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container">
+      <a class="navbar-brand me-2" href="index.html">
+        <img src="{{url_for('static', filename='logo.png')}}" height="16" alt="iHELP" loading="lazy"
+          style="margin-top: -1px" />
+      </a>
+
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" id="ihelp" href="#">iHELP - Your personal eye care buddy.</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" style="
+        margin-left: 11%;
+        margin-right: 11%;
+        margin-bottom: 0.1px;
+        margin-top: 5%;
+      ">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner" style="height: 400px">
+      <div class="carousel-item active">
+        <img src="{{url_for('static', filename='test (3).jpg')}}" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="{{url_for('static', filename='manik.jpg')}}" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="{{url_for('static', filename='1324928 (3).jpg')}}" class="d-block w-100" alt="..." />
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <section class="vh-500">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Retinopathy</h5>
+                          <p class="card-text">
+                            Retinopathy is a condition which develops in the eye, which if not treated at early stages could lead to permanent blindness
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Service we provide</h5>
+                          <p class="card-text">
+                            With modern technology and deep learning model we provide the patients quick information about their current stage of diabetic retinopathy by analysing the eye scans.
+                          </p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="vh-500">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                    USER DETAILS
+                  </p>
+
+                  <form class="mx-1 mx-md-4" action="/" method="post" enctype="multipart/form-data">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example1c">Name</label>
+                        <input type="text" id="form3Example1c" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c">Email</label>
+                        <input type="email" id="form3Example3c" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example2c">Contact</label>
+                        <input type="text" id="form3Example2c" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4c">Age</label>
+                        <input type="text" id="form3Example4c" class="form-control" />
+                      </div>
+                    </div>
+
+                    <!-- <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="button" class="btn btn-primary btn-lg">
+                        Register
+                      </button>
+                    </div> -->
+                    
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-group flex-fill mb-0">
+                      <label class="form-label" for="form3Examplec">Upload eye scan</label>
+                      <input type="file" class="form-control" id="customFile" name="imagefile">
+                    </div>
+                  </div>
+  
+                    <br>
+
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="Predict Image" class="btn btn-primary btn-lg" onclick="fn1()">Predict</button>
+                    </div>
+
+                  </form>
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                  <img src="{{url_for('static', filename='eye.gif')}}" class="img-fluid" alt="resisteration image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- old start-->
+
+  <!-- <section class="vh-100"">
+        <div class=" container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Upload Eye Scan</p>
+
+                <form action="/" method="post" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <input type="file" class="form-control" id="customFile" name="imagefile">
+                  </div>
+
+                  <br>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button type="Predict Image" class="btn btn-primary btn-lg">Predict</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section> -->
+
+  <!-- old end -->
+
+
+
 </body>
 
 </html>

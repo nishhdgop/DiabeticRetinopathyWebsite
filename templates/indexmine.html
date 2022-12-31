@@ -9,7 +9,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- <link rel="stylesheet" href="style.css"> -->
-  <title>i-Help</title>
+  <title>eye</title>
 <style>
   * {
     margin: 0;
@@ -173,19 +173,17 @@ nav {
     font-size: 1.5rem;
     font-weight: 300;
 }
-.form-label{
-    color:white;
-    font-size: .8em;
-    font-weight: 300;
-}
-.btn-lg {
-    font-weight: 300;
-    font-size:0.8em;
-    margin-top: 0em;
-    padding: 0.5em 0.5em;
+.btn btn-primary btn-lg{
+    padding:1em,1em;
+    margin-top: 1em;
     border-radius: 1em;
-    background-color: rgb(235, 170, 170);
+    background-color: rgb(235, 170, 170)
 }
+/* .btn btn-primary btn-lg {
+    margin-top: 1em;
+    font-size: 2em;
+    color: rgb(32, 31, 31);
+} */
 
 
 .button1:hover {
@@ -333,7 +331,7 @@ nav {
     <section class="user">
       <p class="user">Enter User's details:</p>
       <p class="userHeading">A quick diabetic retinopathy test just a click away...</p>
-      <form action="/" class="form" method="post" enctype="multipart/form-data"> 
+      <form action="" class="form">
         
         <input type="text" name="name" class="box11" placeholder="Enter Patient's name">
         <input type="email" name="emailId" class="box2" placeholder="Enter email Id">
@@ -341,7 +339,7 @@ nav {
         <input type="number" name="username" class="box4" placeholder="Enter age">
         <label class="form-label" for="form3Examplec">Upload eye scan</label>
         <input type="file" class="form-control" id="customFile" name="imagefile"><br><br>
-        <button type="Predict Image" class="btn-lg" onclick="fn1()">Predict </button>
+        <button type="Predict Image" class="btn btn-primary btn-lg" onclick="fn1()">Predict </button>
       </form>
       <br><br><br><br><br>
     </section>
