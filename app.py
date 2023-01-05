@@ -1,7 +1,9 @@
 from fpdf import FPDF
 import pymongo
 import matplotlib.pyplot as plt
-import pandas as pd
+# import pandas as pd
+from moralis import evm_api 
+from base64_pdf import BASE_64
 import numpy as np
 import cv2
 import smtplib
@@ -120,6 +122,7 @@ def predict_new(path, name, emailId, username, contact):
     session.sendmail(sender, receiver, text)
     session.quit()
     print('Mail Sent')
+    ipfsupload()
     parallel(f"Your diabetic retinopathy stage is {a}")
 
 
@@ -142,6 +145,19 @@ def predict():
     predict_new(image_path, name, emailId, username, contact)
     return render_template('index.html')
 
+def ipfsupload():
+    api_key="zCeUElAUJESksh44iZAMQnKVzrzqO5rkmoHVxIK06XL1qJdHDVFADZJ5V6gPNNdI"
+    body=[
+    {
+        "path":"report.pdf",
+        "content":BASE_64,
+    }
+    ]
+    result=evm_api.ipfs.upload_folder(
+    api_key=api_key,
+    body=body,
+    )
+    print(result["path"])
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
