@@ -75,7 +75,7 @@ The email is generateed once the prediction happens from the image uploaded by t
 ![UI1_email](https://user-images.githubusercontent.com/108075033/210940453-570fe8e3-70de-4fb6-8104-00cafd6eeab0.png)
 
 Output 8:
-The generated report after prediction stored on the ipfs web3 storage.
+The generated report after prediction stored on the ipfs web3 storage using the moralis api:
 
 ![ipfs_pdf](https://user-images.githubusercontent.com/108075033/210940474-7fd60b29-0d76-47e7-873d-24646cddc213.png)
 
