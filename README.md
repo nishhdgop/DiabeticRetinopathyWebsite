@@ -1,2 +1,2 @@
-# Hackzon 2023 macBlockers - Diabetic Retinopathy 
+# Hackzon 2023 macBlockers - i-Help
 
