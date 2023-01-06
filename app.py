@@ -54,12 +54,12 @@ def mail(receiver_mail_id, message):
     s.sendmail("manik.practicepurpose@gmail.com", receiver_mail_id, message)
     s.quit()
 
-def databaseInsert(name, emailId, username, contact, nu):
+def databaseInsert(name, emailId, username, contact, nu,url):
     client = pymongo.MongoClient("mongodb://localhost:27017")
     db = client['iHelp']
     collection = db['iHelp']
     dictionary = {"Name": name, "Email-ID": emailId,
-                  "Username": username, "Contact": contact, "Prediction": nu}
+                  "Username": username, "Contact": contact, "Prediction": nu,"IPFS_URL":url}
     collection.insert_one(dictionary)
 
 
@@ -77,23 +77,136 @@ def predict_new(path, name, emailId, username, contact):
     pred = np.argmax(predict, axis=1)
     a = predictions[pred[0]]
     print(f"\n\n\n\n\n\nPredicted: {a}\n\n\n\n\n\n")
-    databaseInsert(name, emailId, username, contact, a)
+    
     file1 = open("basefile.txt", "w")
-    mm = f"""
-    Greetings from iHelp....
-    Your diabetic retinopathy is {a} 
-    Thank you for using our service!!!!!
+  
+    if(a=="Mild"):
+        mm =   f"""
+                        DIABETIC RETINOPATHY report by i-Help
+
+     Patient name:{name}
+     Age: {username}
+     Email id:{emailId}
+     Contact no:{contact}
+
+     Diagnosis:
+     1. Retina scan shows signs of {a} DR.
+
+     Further advice for treatment: 
+     1. Patient is advised to keep sugar levels in check.
+     2. Take a glycosylated haemoglobin or haemoglobinn A1C test.
+     3.Excercise regularly and lose excess weight.
+     4.Pay attention to vision changes.
+
+     a) For further advice the patient can visit the nearest eye hospital 
+        to the current location(as displayed on the website).
+     b) To contact us visit our i-Help web app.
+     c) Incase this report is lost, a copy of this report can be found 
+        on our IPFS Web3 storage.
 
     """
+    elif(a=="Moderate"):
+        mm =  f"""
+                        DIABETIC RETINOPATHY report by i-Help
+
+     Patient name:{name}
+     Age: {username}
+     Email id:{emailId}
+     Contact no:{contact}
+
+     Diagnosis:
+     1. Retina scan shows signs of {a} DR.
+
+     Further advice for treatment: 
+     1. Patient is advised to keep sugar levels in check.
+     2. Take a glycosylated haemoglobin or haemoglobinn A1C test.
+     3.Excercise regularly and lose excess weight.
+     4.Pay attention to vision changes
+
+     a) For further advice the patient can visit the nearest eye hospital 
+        to the current location(as displayed on the website).
+     b) To contact us visit our i-Help web app.
+     c) Incase this report is lost, a copy of this report can be found 
+        on our IPFS Web3 storage.
+
+        """
+    elif(a=="No Diabetic Retinopathy"):
+        mm =  f"""
+                        DIABETIC RETINOPATHY report by i-Help
+
+     Patient name:{name}
+     Age: {username}
+     Email id:{emailId}
+     Contact no:{contact}
+
+     Diagnosis:
+     1. Retina scan shows signs of {a} DR.
+     2. Patient is advised to excercise regularly.
+     
+     Further advice for treatment:
+     a) For further advice the patient can visit the nearest eye hospital 
+        to the current location(as displayed on the website).
+     b) To contact us visit our i-Help web app.
+     c) Incase this report is lost, a copy of this report can be found 
+        on our IPFS Web3 storage.
+
+        """ 
+    elif(a=="Proliferate "):
+        mm = f"""
+                        DIABETIC RETINOPATHY report by i-Help
+
+     Patient name:{name}
+     Age: {username}
+     Email id:{emailId}
+     Contact no:{contact}
+
+     Diagnosis:
+     1. Retina scan shows signs of {a} DR.
+     2. Patient is stronlgy advised to meet an opthalmologist.
+     3. Patient will require laser treatment or surgery to avoid losing vision.
+
+     Further advice for treatment:
+     a) For further advice the patient can visit the nearest eye hospital 
+        to the current location(as displayed on the website).
+     b) To contact us visit our i-Help web app.
+     c) Incase this report is lost, a copy of this report can be found 
+        on our IPFS Web3 storage.
+
+        """
+    elif(a=="Severe"):
+        mm = f"""
+                        DIABETIC RETINOPATHY report by i-Help
+
+     Patient name:{name}
+     Age: {username}
+     Email id:{emailId}
+     Contact no:{contact}
+
+     Diagnosis:
+     1. Retina scan shows signs of {a} DR.
+     2.Patient is advised to consult an opthalmologist as soon as possible.
+     3.Patient might require laser treatment or surgery.
+     
+     Further advice for treatment:
+     a) For further advice the patient can visit the nearest eye hospital 
+        to the current location(as displayed on the website).
+     b) To contact us visit our i-Help web app.
+     c) Incase this report is lost, a copy of this report can be found 
+        on our IPFS Web3 storage.
+
+        """
+
     file1.writelines(mm)
     file1.close()
     pdf = FPDF()
     pdf.add_page()
-    pdf.set_font("Arial", size=20)
+    pdf.set_font("Arial", size=16)
     f = open("basefile.txt", "r")
     for x in f:
-        pdf.cell(200, 10, txt=x, ln=1, align='C')
+        pdf.cell(200, 8, txt=x, ln=.8, align='L')
     print("Done with pdf")
+    ipfsurl=ipfsupload()
+    databaseInsert(name, emailId, username, contact, a,ipfsurl)
     pdf.output('report.pdf')
     body = '''Hello,
     This is the body of the email
@@ -122,7 +235,7 @@ def predict_new(path, name, emailId, username, contact):
     session.sendmail(sender, receiver, text)
     session.quit()
     print('Mail Sent')
-    ipfsupload()
+  
     parallel(f"Your diabetic retinopathy stage is {a}")
 
 
@@ -157,7 +270,8 @@ def ipfsupload():
     api_key=api_key,
     body=body,
     )
-    print(result["path"])
+    return result[0]["path"]
+   
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

@@ -1,6 +1,21 @@
 
-    Greetings from iHelp....
-    Your diabetic retinopathy is No Diabetic Retinopathy 
-    Thank you for using our service!!!!!
+                        DIABETIC RETINOPATHY report by i-Help
 
-    
+     Patient name:Nischith
+     Age: 11
+     Email id:nischithtn@gmail.com
+     Contact no:8784462261
+
+     Diagnosis:
+     1. Retina scan shows signs of Proliferate  DR.
+     2. Patient is stronlgy advised to meet an opthalmologist.
+     3. Patient will require laser treatment or surgery to avoid losing vision.
+
+     Further advice for treatment:
+     a) For further advice the patient can visit the nearest eye hospital 
+        to the current location(as displayed on the website).
+     b) To contact us visit our i-Help web app.
+     c) Incase this report is lost, a copy of this report can be found 
+        on our IPFS Web3 storage.
+
+        
